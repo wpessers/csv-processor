@@ -46,7 +46,8 @@ def main():
             os.makedirs("./output")
 
       for csv_file_path in csv_file_list:
-            naam_persoon = str(re.findall(r"_(.+)\.csv", str(csv_file_path)))[2:-2]
+            naam_persoon = str(re.findall(r"[-_](.+)\.csv", str(csv_file_path)))[2:-2]
+            naam_persoon = naam_persoon.strip()
             print("Reading: " + naam_persoon)
             df = pd.read_csv(csv_file_path, skipinitialspace=True, sep=":")
             colnames = df["kolom"].tolist()
